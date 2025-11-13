@@ -15,11 +15,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Set up Node.js
+      # 2. Set up Node.js (FIXED)
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20' # Changed from 18
           cache: 'npm'
 
       # 3. Install packages
@@ -43,8 +43,8 @@ jobs:
           # The 'deployer' username
           REMOTE_USER: ${{ secrets.VPS_USER }}
           
-          # The 'build' folder on the runner
-          SOURCE: "./build/"
+          # The 'dist' folder on the runner (FIXED)
+          SOURCE: "./dist/" # Changed from ./build/
           
           # The destination folder on your VPS
           TARGET: "/var/www/FMGE_WEB/"
