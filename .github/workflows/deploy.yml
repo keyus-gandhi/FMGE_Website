@@ -32,7 +32,7 @@ jobs:
 
       # 5. Deploy to your VPS
       - name: Deploy to VPS
-        uses: burnett01/rsync-deployments@v6.0.0
+        uses: burnett01/rsync-deployments@v7.1.0
         with:
           # Tell rsync to be verbose, recursive, archive, and delete old files
           switches: -avzr --delete
