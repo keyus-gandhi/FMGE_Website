@@ -30,8 +30,7 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      # 5. NEW: Copy package files into 'dist' folder
-      # This ensures they get deployed with the app
+      # 5. Copy package files into 'dist' folder
       - name: Copy package files
         run: |
           cp package.json ./dist/
@@ -48,7 +47,7 @@ jobs:
           TARGET: "/var/www/FMGE_WEB/"
           ARGS: "-avzr --delete"
           
-      # 7. NEW: Install dependencies on the VPS and restart app
+      # 7. Install dependencies and restart app
       - name: Install dependencies and restart app
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -58,4 +57,4 @@ jobs:
           script: |
             cd /var/www/FMGE_WEB/
             npm install --production
-            pm2 restart fmge-website
+            pm2 startOrRestart server/node-build.mjs --name fmge-website
