@@ -57,4 +57,4 @@ jobs:
           script: |
             cd /var/www/FMGE_WEB/
             npm install --production
-            pm2 startOrRestart server/node-build.mjs --name fmge-website
+            pm2 restart fmge-website || pm2 start server/node-build.mjs --name fmge-website
