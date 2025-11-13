@@ -1,0 +1,141 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Medical-themed Tailwind CSS color scheme
+   * Uses professional healthcare brand colors
+   */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 213 27% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 27% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 27% 20%;
+
+    --primary: 213 97% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 213 40% 96%;
+    --secondary-foreground: 213 27% 20%;
+
+    --muted: 210 14% 83%;
+    --muted-foreground: 213 14% 49%;
+
+    --accent: 355 87% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 14% 89%;
+    --input: 210 14% 93%;
+    --ring: 213 94% 45%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 213 27% 20%;
+    --sidebar-primary: 213 97% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 40% 96%;
+    --sidebar-accent-foreground: 213 27% 20%;
+    --sidebar-border: 210 14% 89%;
+    --sidebar-ring: 213 94% 45%;
+  }
+
+  .dark {
+    --background: 213 27% 12%;
+    --foreground: 0 0% 95%;
+
+    --card: 213 27% 16%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 213 27% 16%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 213 88% 65%;
+    --primary-foreground: 213 27% 12%;
+
+    --secondary: 213 30% 25%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 213 20% 40%;
+    --muted-foreground: 213 12% 70%;
+
+    --accent: 355 87% 60%;
+    --accent-foreground: 213 27% 12%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 213 20% 30%;
+    --input: 213 20% 35%;
+    --ring: 213 88% 60%;
+    --sidebar-background: 213 27% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 213 88% 65%;
+    --sidebar-primary-foreground: 213 27% 12%;
+    --sidebar-accent: 213 30% 25%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 213 20% 30%;
+    --sidebar-ring: 213 88% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+  }
+
+  :where(p, span, li, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .gradient-accent {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  .card-elevated {
+    @apply rounded-xl border border-border bg-card shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white hover:opacity-90 transition-all duration-200;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200;
+  }
+}
