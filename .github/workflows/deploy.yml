@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Set up Node.js
+      # 2. Set up Node.js (change '18' if you use a different version)
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -40,10 +40,10 @@ jobs:
           # This is the built 'build' folder
           path: ./build/
           
-          # These are the GitHub secrets you just added
+          # These are the GitHub secrets you added
           remote_host: ${{ secrets.VPS_HOST }}
           remote_user: ${{ secrets.VPS_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-          # This is the new, safe folder you created on your VPS
+          # This is your specific folder on the VPS
           remote_path: /var/www/FMGE_WEB/
