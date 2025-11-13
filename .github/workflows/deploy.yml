@@ -1,0 +1,49 @@
+# Name of the workflow
+name: Build and Deploy to VPS
+
+# Run this workflow on a push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Get your code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # 3. Install packages
+      - name: Install Dependencies
+        run: npm ci
+
+      # 4. Build your React app
+      - name: Build Project
+        run: npm run build
+
+      # 5. Deploy to your VPS
+      - name: Deploy to VPS
+        uses: burnett01/rsync-deployments@v6.0.0
+        with:
+          # Tell rsync to be verbose, recursive, archive, and delete old files
+          switches: -avzr --delete
+          
+          # This is the built 'build' folder
+          path: ./build/
+          
+          # These are the GitHub secrets you just added
+          remote_host: ${{ secrets.VPS_HOST }}
+          remote_user: ${{ secrets.VPS_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          # This is the new, safe folder you created on your VPS
+          remote_path: /var/www/FMGE_WEB/
