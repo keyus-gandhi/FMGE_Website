@@ -15,11 +15,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Set up Node.js (FIXED)
+      # 2. Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Changed from 18
+          node-version: '20'
           cache: 'npm'
 
       # 3. Install packages
@@ -30,24 +30,32 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      # 5. Deploy to your VPS (NEW ACTION)
-      - name: Deploy to VPS
+      # 5. NEW: Copy package files into 'dist' folder
+      # This ensures they get deployed with the app
+      - name: Copy package files
+        run: |
+          cp package.json ./dist/
+          cp package-lock.json ./dist/
+
+      # 6. Deploy 'dist' folder to your VPS
+      - name: Deploy files to VPS
         uses: easingthemes/ssh-deploy@v5.0.0
         with:
-          # The private key we added to GitHub Secrets
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          
-          # The host/IP of your VPS
           REMOTE_HOST: ${{ secrets.VPS_HOST }}
-          
-          # The 'deployer' username
           REMOTE_USER: ${{ secrets.VPS_USER }}
-          
-          # The 'dist' folder on the runner (FIXED)
-          SOURCE: "./dist/" # Changed from ./build/
-          
-          # The destination folder on your VPS
+          SOURCE: "./dist/"
           TARGET: "/var/www/FMGE_WEB/"
-          
-          # rsync arguments to delete old files
           ARGS: "-avzr --delete"
+          
+      # 7. NEW: Install dependencies on the VPS and restart app
+      - name: Install dependencies and restart app
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/FMGE_WEB/
+            npm install --production
+            pm2 restart fmge-website
