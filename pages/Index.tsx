@@ -1,4 +1,4 @@
-import { CheckCircle, BookOpen, Zap, Users, Award, Stethoscope, Smartphone } from "lucide-react";
+import { CheckCircle, BookOpen, Zap, Users, Award, Stethoscope, Smartphone, Image, Layers, MessagesSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import FeatureCard from "@/components/FeatureCard";
@@ -7,28 +7,91 @@ import FeatureModal from "@/components/FeatureModal";
 const FEATURES = [
   {
     id: "mock-tests",
-    title: "Mock Tests",
+    title: "PYQs & Mock Tests",
     icon: <Award size={28} />,
     shortDesc:
-      "Practice with realistic full-length mock exams that simulate the actual FMG exam experience.",
+      "Practice with realistic mock exams & PYQs from all 19 subjects.",
     fullDesc:
-      "Our comprehensive mock tests are designed to replicate the exact format, difficulty, and time constraints of the actual FMG exam. With hundreds of carefully crafted questions developed by medical experts, you'll build confidence and identify areas for improvement before the real test.",
+      "Our comprehensive mock tests are designed to replicate the exact format, difficulty, and time constraints of the actual FMG exam. Access a huge bank of Previous Year Questions (PYQs) covering all 19 subjects to understand exam patterns and high-yield topics.",
     benefits: [
       "Full-length practice exams mimicking real exam conditions",
+      "PYQ bank for all 19 subjects",
       "Timed tests to improve speed and accuracy",
       "Detailed explanations for every question",
       "Performance analytics and progress tracking",
       "Practice by topic or full integrated exams",
-      "Regular updates with new practice materials",
     ],
     details: [
+      "Access the complete PYQ bank (all 19 subjects)",
       "Take full-length mock exams under timed conditions",
       "Review detailed explanations after completing tests",
       "Track your performance and identify weak areas",
       "Practice specific topics or full integrated exams",
-      "Compare your scores with national averages",
     ],
     delay: 0,
+  },
+  {
+    id: "lmr-3",
+    title: "LMR 3.0",
+    icon: <BookOpen size={28} />,
+    shortDesc: "Your ultimate Last Minute Revision tool, curated by experts for high-yield topics.",
+    fullDesc: "LMR 3.0 (Last Minute Revision) is our flagship high-yield resource. It's designed to help you cover the most essential topics, facts, and concepts just before your exam, ensuring maximum retention.",
+    benefits: [
+      "High-yield facts for all subjects",
+      "Perfect for rapid revision",
+      "Focus on must-know topics",
+      "Curated by top medical educators",
+      "Concise and easy-to-digest format"
+    ],
+    details: [
+      "Access the complete LMR 3.0 digital book",
+      "Bookmark and highlight key sections",
+      "Quickly review before the exam",
+      "Search for specific topics"
+    ],
+    delay: 100,
+  },
+  {
+    id: "buzz-image-books",
+    title: "Buzz Book & Image Book",
+    icon: <Image size={28} />,
+    shortDesc: "Master key buzzwords and visual topics with our specialized content books.",
+    fullDesc: "The Buzz Book helps you master the specific keywords and one-liners that frequently appear in exams. The Image Book provides a comprehensive collection of high-yield images, diagrams, and clinical slides.",
+    benefits: [
+      "Extensive Buzzword collection",
+      "High-yield Image Book for visual learners",
+      "Master pattern recognition for image-based questions",
+      "Quickly identify key diagnostic features",
+      "Covers all 19 subjects"
+    ],
+    details: [
+      "Browse the dedicated Buzz Book",
+      "Study from the Image Book library",
+      "Practice image-based questions",
+      "Search by topic or keyword"
+    ],
+    delay: 200,
+  },
+  {
+    id: "flashcards",
+    title: "Flashcards",
+    icon: <Layers size={28} />,
+    shortDesc: "Reinforce your learning with spaced repetition flashcards for all subjects.",
+    fullDesc: "Our digital flashcard decks are perfect for active recall and spaced repetition. Cover all 19 subjects and solidify your memory of key facts, drugs, and concepts.",
+    benefits: [
+      "Active recall learning method",
+      "Spaced repetition algorithm",
+      "Decks for all 19 subjects",
+      "Create and customize your own decks",
+      "Track your memory strength"
+    ],
+    details: [
+      "Review daily flashcard recommendations",
+      "Track your mastery of each card",
+      "Use pre-made or custom decks",
+      "Sync progress across devices"
+    ],
+    delay: 300,
   },
   {
     id: "daily-updates",
@@ -52,37 +115,14 @@ const FEATURES = [
       "Get expert tips from experienced physicians",
       "Stay updated with medical advancements",
     ],
-    delay: 100,
-  },
-  {
-    id: "study-books",
-    title: "Study Books",
-    icon: <BookOpen size={28} />,
-    shortDesc: "Access comprehensive study guides and reference materials curated by medical experts.",
-    fullDesc:
-      "Our curated collection of study materials includes comprehensive guides, reference books, and detailed notes on all major FMG exam topics. Each resource has been reviewed and selected by our team of medical educators to ensure quality and relevance for your exam preparation.",
-    benefits: [
-      "Comprehensive study guides for all exam topics",
-      "High-yield notes and quick references",
-      "Clinical case presentations",
-      "Medical illustrations and diagrams",
-      "Downloadable PDF materials",
-      "Organized by exam subject areas",
-    ],
-    details: [
-      "Access organized study guides by topic",
-      "Review high-yield facts and mnemonics",
-      "Study clinical case scenarios",
-      "View medical illustrations and diagrams",
-      "Download materials for offline study",
-    ],
-    delay: 200,
+    delay: 400,
   },
   {
     id: "expert-lectures",
     title: "Expert Lectures",
     icon: <Users size={28} />,
-    shortDesc: "Learn from experienced physicians and exam coaches through detailed video lectures.",
+    //shortDesc: "Learn from experienced physicians and exam coaches through detailed video lectures.",
+    shortDesc: "Comming Soon: Learn from experienced physicians and exam coaches through detailed video lectures.",
     fullDesc:
       "Join live and recorded sessions with experienced physicians, board-certified specialists, and successful FMG candidates. Our expert instructors break down complex medical concepts, share exam strategies, and provide insider knowledge to help you maximize your exam performance.",
     benefits: [
@@ -100,7 +140,7 @@ const FEATURES = [
       "Get answers to your medical questions",
       "Learn exam-specific strategies",
     ],
-    delay: 300,
+    delay: 500,
   },
   {
     id: "progress-tracking",
@@ -124,7 +164,7 @@ const FEATURES = [
       "Track your improvement over time",
       "Set and monitor study goals",
     ],
-    delay: 400,
+    delay: 600,
   },
   {
     id: "medical-excellence",
@@ -148,7 +188,30 @@ const FEATURES = [
       "Study evidence-based practices",
       "Apply knowledge to clinical scenarios",
     ],
-    delay: 500,
+    delay: 700,
+  },
+  {
+    id: "community-support",
+    title: "Community & Support",
+    icon: <MessagesSquare size={28} />,
+    shortDesc: "Join a dedicated community of FMG peers and mentors for support and discussion.",
+    fullDesc:
+      "You're not alone on this journey. Join our private community forums to connect with fellow FMG candidates, ask questions, share study tips, and get support from peers and mentors who understand the process.",
+    benefits: [
+      "Private discussion forums",
+      "Connect with peers and mentors",
+      "Ask questions and share resources",
+      "Motivational support",
+      "Stay updated with group announcements"
+    ],
+    details: [
+      "Access private forums",
+      "Join study groups",
+      "Get peer-to-peer support",
+      "Share your experiences",
+      "Find study partners"
+    ],
+    delay: 800,
   },
 ];
 
@@ -264,7 +327,7 @@ export default function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Why Choose MedExam?
+                Why Choose Aspira Edge?
               </h2>
               <ul className="space-y-4">
                 {[

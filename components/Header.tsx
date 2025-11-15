@@ -8,10 +8,13 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl text-primary">
-          <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center text-white font-bold">
-            AE
-          </div>
+        <Link to="/" className="flex items-center gap-3 font-bold text-xl text-primary">
+          {/* Logo image directly, without gradient container */}
+          <img
+            src="/Aspira Edge-all/Aspira Edge/Aspira Edge -png/2.png"
+            alt="Aspira Edge Logo"
+            className="w-16 h-16" 
+          />
           <span className="hidden sm:inline">ASPIRA EDGE</span>
         </Link>
 

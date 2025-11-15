@@ -11,9 +11,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center text-white font-bold">
-                AE
-              </div>
+              {/* Updated Logo to match header */}
+              <img
+                src="/Aspira Edge-all/Aspira Edge/Aspira Edge -png/2.png"
+                alt="Aspira Edge Logo"
+                className="w-16 h-16"
+              />
               <span className="font-bold text-lg">ASPIRA EDGE</span>
             </div>
             <p className="text-gray-400 text-sm mb-6">
@@ -23,7 +26,7 @@ export default function Footer() {
               <p className="text-xs text-gray-500 font-semibold">Download Our App</p>
               <div className="flex gap-3">
                 <a
-                  href="https://apps.apple.com/app/medexam"
+                  href="https://apps.apple.com/app/aspiraedge"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-xs text-gray-300"
@@ -32,7 +35,7 @@ export default function Footer() {
                   App Store
                 </a>
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.medexam"
+                  href="https://play.google.com/store/apps/details?id=com.aspiraedge"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-xs text-gray-300"
@@ -78,7 +81,7 @@ export default function Footer() {
             </ul>
           </div>
 
-      
+        
 
           {/* Contact */}
           <div>
@@ -86,15 +89,17 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
               <li className="flex items-center gap-2">
                 <Mail size={16} />
-                <span>support@medexam.com</span>
+                <span>kgandhi7878@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} />
-                <span>+1 (555) 123-4567</span>
+                {/* Updated Phone */}
+                <span>+91 7073238605</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="mt-1 flex-shrink-0" />
-                <span>123 Medical Center, Health City, HC 12345</span>
+                {/* Updated Address */}
+                <span>Kherwara, Udaipur, Rajasthan, 313803, India</span>
               </li>
             </ul>
           </div>
@@ -102,7 +107,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>&copy; {currentYear} MedExam. All rights reserved.</p>
+            <p>&copy; {currentYear} AspiraEdge. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0 flex-wrap justify-center md:justify-end">
               <Link to="/privacy" className="hover:text-white transition-colors">
                 Privacy Policy
@@ -110,7 +115,7 @@ export default function Footer() {
               <Link to="/terms" className="hover:text-white transition-colors">
                 Terms of Service
               </Link>
-              <a href="mailto:support@medexam.com" className="hover:text-white transition-colors">
+              <a href="mailto:kgandhi7878@gmail.com" className="hover:text-white transition-colors">
                 Contact Us
               </a>
             </div>

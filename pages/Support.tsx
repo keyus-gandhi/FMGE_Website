@@ -116,20 +116,20 @@ export default function Support() {
             {
               icon: Mail,
               title: "Email",
-              value: "support@medexam.com",
+              value: "kgandhi7878@gmail.com",
               subtitle: "Response within 24 hours",
             },
             {
               icon: Phone,
               title: "Phone",
-              value: "+1 (555) 123-4567",
-              subtitle: "Available 9 AM - 6 PM EST",
+              value: "+91 7073238605",
+              subtitle: "Available 10 AM - 6 PM IST",
             },
             {
               icon: MapPin,
               title: "Location",
-              value: "123 Medical Center",
-              subtitle: "Health City, HC 12345",
+              value: "Kherwara, Udaipur",
+              subtitle: "Rajasthan, 313803, India",
             },
           ].map((contact, i) => {
             const Icon = contact.icon;
@@ -167,10 +167,10 @@ export default function Support() {
               <p className="text-muted-foreground mb-6">
                 Your message has been sent to{" "}
                 <a 
-                  href="mailto:support@medexam.com" 
+                  href="mailto:kgandhi7878@gmail.com" 
                   className="text-primary hover:underline font-semibold"
                 >
-                  support@medexam.com
+                  kgandhi7878@gmail.com
                 </a>
                 . Redirecting you back to home...
               </p>
@@ -341,7 +341,7 @@ export default function Support() {
                 )}
               </button>
               <p className="text-xs text-center text-muted-foreground mt-2">
-                Your message will be sent securely to support@medexam.com
+                Your message will be sent securely to kgandhi7878@gmail.com
               </p>
             </form>
           )}
@@ -363,15 +363,15 @@ export default function Support() {
               },
               {
                 q: "What payment methods do you accept?",
-                a: "We accept all major credit cards, debit cards, and digital payment methods including PayPal and Apple Pay.",
+                a: "We accept all major credit cards, debit cards, and popular UPI / wallet payment methods.",
               },
               {
                 q: "Can I get a refund?",
-                a: "Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.",
+                a: "As per our Terms & Conditions, subscription fees are non-refundable once activated. Refunds may only be considered for payment failures or duplicate transactions.",
               },
               {
                 q: "How often is the content updated?",
-                a: "We update our content daily with new questions, explanations, and medical insights to keep you current.",
+                a: "We are constantly working to update our content with new questions, explanations, and insights to keep you current.",
               },
             ].map((faq, i) => (
               <div
