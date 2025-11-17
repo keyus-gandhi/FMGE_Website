@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import FeatureCard from "@/components/FeatureCard";
 import FeatureModal from "@/components/FeatureModal";
+// 1. IMPORT THE NEW MODAL
+import DownloadAppModal from "@/components/DownloadAppModal"; 
 
 const FEATURES = [
   {
@@ -121,7 +123,6 @@ const FEATURES = [
     id: "expert-lectures",
     title: "Expert Lectures",
     icon: <Users size={28} />,
-    //shortDesc: "Learn from experienced physicians and exam coaches through detailed video lectures.",
     shortDesc: "Comming Soon: Learn from experienced physicians and exam coaches through detailed video lectures.",
     fullDesc:
       "Join live and recorded sessions with experienced physicians, board-certified specialists, and successful FMG candidates. Our expert instructors break down complex medical concepts, share exam strategies, and provide insider knowledge to help you maximize your exam performance.",
@@ -217,6 +218,16 @@ const FEATURES = [
 
 export default function Index() {
   const [selectedFeature, setSelectedFeature] = useState<(typeof FEATURES)[0] | null>(null);
+
+  // 2. ADD NEW STATE FOR THE DOWNLOAD MODAL
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState("");
+
+  // 3. CREATE A HANDLER FUNCTION
+  const handleDownloadClick = (url) => {
+    setDownloadUrl(url);
+    setIsDownloadModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -405,8 +416,8 @@ export default function Index() {
         </div>
       </section>
 
-{/* Get App Section */}
-<section id="getApp" className="py-20 md:py-28 relative overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      {/* Get App Section */}
+      <section id="getApp" className="py-20 md:py-28 relative overflow-hidden bg-slate-50 dark:bg-slate-900/30">
         {/* Background decoration */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
@@ -441,12 +452,12 @@ export default function Index() {
                 className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center max-w-lg mx-auto animate-slide-up"
                 style={{ animationDelay: "300ms" }}
               >
-                {/* App Store Button */}
-                <a
-                  href="https://apps.apple.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-start gap-3 px-5 py-4 rounded-xl bg-foreground hover:bg-foreground/90 text-background transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] border-2 border-foreground"
+                {/* 4. MODIFIED APP STORE BUTTON */}
+                <button
+                  type="button"
+                  disabled={true} // Disable the button for now
+                  onClick={() => handleDownloadClick('https://apps.apple.com')}
+                  className="group flex items-center justify-start gap-3 px-5 py-4 rounded-xl bg-foreground hover:bg-foreground/90 text-background transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] border-2 border-foreground w-full sm:w-auto"
                 >
                   <svg
                     className="w-8 h-8 flex-shrink-0"
@@ -459,15 +470,15 @@ export default function Index() {
                   <div className="flex flex-col items-start leading-tight">
                     <span className="text-[11px] opacity-80 font-medium">Download on the</span>
                     <span className="text-lg font-semibold -mt-0.5">App Store</span>
+                    <span className="text-lg font-semibold -mt-0.5">Coming Soon ...</span>
                   </div>
-                </a>
+                </button>
 
-                {/* Google Play Button */}
-                <a
-                  href="https://play.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-start gap-3 px-5 py-4 rounded-xl bg-foreground hover:bg-foreground/90 text-background transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] border-2 border-foreground"
+                {/* 4. MODIFIED GOOGLE PLAY BUTTON */}
+                <button
+                  type="button"
+                  onClick={() => handleDownloadClick('https://drive.google.com/file/d/1apNQQWxyP3Ux3UiXhPhmtoTRggED55he/view?usp=drivesdk')}
+                  className="group flex items-center justify-start gap-3 px-5 py-4 rounded-xl bg-foreground hover:bg-foreground/90 text-background transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] border-2 border-foreground w-full sm:w-auto"
                 >
                   <svg
                     className="w-8 h-8 flex-shrink-0"
@@ -481,7 +492,7 @@ export default function Index() {
                     <span className="text-[11px] opacity-80 font-medium">Get it on</span>
                     <span className="text-lg font-semibold -mt-0.5">Google Play</span>
                   </div>
-                </a>
+                </button>
               </div>
 
               {/* Additional features list */}
@@ -512,11 +523,17 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Feature Modal */}
+      {/* 5. RENDER BOTH MODALS */}
       <FeatureModal
         isOpen={!!selectedFeature}
         onClose={() => setSelectedFeature(null)}
         feature={selectedFeature}
+      />
+
+      <DownloadAppModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        downloadUrl={downloadUrl}
       />
     </div>
   );
