@@ -34,6 +34,12 @@ export default function Terms() {
                 A valid account and active subscription are required to access
                 Premium content including LMR 3.0, PYQs, and Buzz Book.
               </li>
+              {/* --- ADDED THIS CONDITION --- */}
+              <li>
+                Access to specific content, such as the Buzz Book, is valid until
+                the date of the next upcoming FMGE exam.
+              </li>
+              {/* ---------------------------- */}
               <li>Subscription fees are non-refundable.</li>
               <li>Sharing accounts with others is strictly prohibited.</li>
             </ul>
