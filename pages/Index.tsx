@@ -9,8 +9,12 @@ import {
   Image, 
   Layers, 
   MessagesSquare, 
-  ShoppingBag, // Added
-  ArrowRight   // Added
+  ShoppingBag, 
+  ArrowRight,
+  // NEW ICONS ADDED HERE
+  Globe,
+  RefreshCw,
+  AlertCircle
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -310,7 +314,7 @@ export default function Index() {
               </Link>
             </div>
 
-            {/* NEW: Small Link for Purchase under buttons */}
+            {/* Small Link for Purchase under buttons */}
             <div className="mt-6 animate-slide-up" style={{ animationDelay: "300ms" }}>
               <Link 
                 to="/purchase" 
@@ -324,38 +328,80 @@ export default function Index() {
         </div>
       </section>
 
-      {/* NEW: Premium Store Banner */}
-      <section className="bg-primary text-primary-foreground py-8 md:py-10 relative overflow-hidden">
-        {/* Decorative background circle */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
-        
-        <div className="container px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-            
-            <div className="flex items-start gap-5">
-              <div className="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
-                <ShoppingBag size={24} className="text-white" />
-              </div>
-              <div className="text-center md:text-left">
-                <h3 className="text-xl font-bold mb-1">
-                  Want to purchase Premium Books?
-                </h3>
-                <p className="text-primary-foreground/80 max-w-xl text-sm md:text-base">
-                  Due to app store policies, all book purchases must be made via our secure web portal. 
-                  Purchases sync automatically to your iOS app.
-                </p>
-              </div>
+      {/* NEW: Improved iOS Purchase Guide Banner */}
+      <section className="bg-primary text-primary-foreground py-10 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div className="absolute -top-24 -left-24 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container px-4 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                
+                {/* Left Side: The "Why" */}
+                <div className="max-w-xl text-center lg:text-left">
+                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+                        <Smartphone size={14} /> iOS Users
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                        How to Buy LMR 3.0 Book
+                    </h2>
+                    <p className="text-primary-foreground/90 text-sm md:text-base leading-relaxed mb-4">
+                        To access the <strong>LMR 3.0 Book</strong> and other premium content on your iPhone, you must purchase them via this secure website.
+                    </p>
+                    
+                    <div className="flex items-start gap-3 bg-black/20 p-3 rounded-lg border border-white/10">
+                        <AlertCircle className="shrink-0 mt-0.5 text-yellow-300" size={18} />
+                        <p className="text-xs text-left">
+                            <strong>Critical:</strong> You must use the <span className="underline decoration-yellow-300 decoration-2 underline-offset-2">SAME Email & Password</span> here as you do in the app for the purchase to sync. And For Android users, purchases can made directly within the app.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Right Side: The "How" (3 Steps) */}
+                <div className="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-4 bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                    
+                    {/* Step 1 */}
+                    <div className="flex flex-col items-center text-center w-full sm:w-32">
+                        <div className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center mb-2 font-bold shadow-lg">1</div>
+                        <div className="text-sm font-semibold mb-1">Get App</div>
+                        <div className="text-xs opacity-80">Create account in Aspira Edge App</div>
+                    </div>
+
+                    <div className="hidden sm:block h-px w-8 bg-white/30"></div>
+
+                    {/* Step 2 */}
+                    <div className="flex flex-col items-center text-center w-full sm:w-32">
+                        <div className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center mb-2 font-bold shadow-lg">2</div>
+                        <div className="text-sm font-semibold mb-1">Buy Here</div>
+                        <div className="text-xs opacity-80">Purchase securely on this website</div>
+                    </div>
+
+                    <div className="hidden sm:block h-px w-8 bg-white/30"></div>
+
+                    {/* Step 3 */}
+                    <div className="flex flex-col items-center text-center w-full sm:w-32">
+                        <div className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center mb-2 font-bold shadow-lg">
+                            <RefreshCw size={18} />
+                        </div>
+                        <div className="text-sm font-semibold mb-1">Auto Sync</div>
+                        <div className="text-xs opacity-80">Open app & read instantly</div>
+                    </div>
+                </div>
             </div>
 
-            <Link 
-              to="/purchase" 
-              className="group flex items-center gap-2 bg-white text-primary hover:bg-slate-100 font-bold py-3 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap"
-            >
-              Buy Books Now
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-          </div>
+            {/* CTA Button centered below on mobile, right aligned on desktop */}
+            <div className="mt-8 flex justify-center lg:justify-start">
+                 <Link 
+                    to="/purchase" 
+                    className="flex items-center gap-2 bg-white text-primary hover:bg-slate-100 font-bold py-4 px-8 rounded-xl transition-all shadow-xl hover:shadow-2xl active:scale-95"
+                >
+                    <Globe size={20} />
+                    Go to Book Purchase Portal
+                    <ArrowRight size={20} className="ml-1" />
+                </Link>
+            </div>
         </div>
       </section>
 
@@ -507,7 +553,7 @@ export default function Index() {
                 className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center max-w-lg mx-auto animate-slide-up"
                 style={{ animationDelay: "300ms" }}
               >
-                {/* APP STORE BUTTON */}
+                {/* APP STORE BUTTON - ENABLED WITH LINK */}
                 <button
                   type="button"
                   onClick={() => handleDownloadClick('https://apps.apple.com/in/app/aspira-edge/id6755354949')}
