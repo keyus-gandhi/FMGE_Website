@@ -1,9 +1,21 @@
-import { CheckCircle, BookOpen, Zap, Users, Award, Stethoscope, Smartphone, Image, Layers, MessagesSquare } from "lucide-react";
+import { 
+  CheckCircle, 
+  BookOpen, 
+  Zap, 
+  Users, 
+  Award, 
+  Stethoscope, 
+  Smartphone, 
+  Image, 
+  Layers, 
+  MessagesSquare, 
+  ShoppingBag, // Added
+  ArrowRight   // Added
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import FeatureCard from "@/components/FeatureCard";
 import FeatureModal from "@/components/FeatureModal";
-// 1. IMPORT THE NEW MODAL
 import DownloadAppModal from "@/components/DownloadAppModal"; 
 
 const FEATURES = [
@@ -218,13 +230,10 @@ const FEATURES = [
 
 export default function Index() {
   const [selectedFeature, setSelectedFeature] = useState<(typeof FEATURES)[0] | null>(null);
-
-  // 2. ADD NEW STATE FOR THE DOWNLOAD MODAL
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState("");
 
-  // 3. CREATE A HANDLER FUNCTION
-  const handleDownloadClick = (url) => {
+  const handleDownloadClick = (url: string) => {
     setDownloadUrl(url);
     setIsDownloadModalOpen(true);
   };
@@ -300,6 +309,52 @@ export default function Index() {
                 Get Support
               </Link>
             </div>
+
+            {/* NEW: Small Link for Purchase under buttons */}
+            <div className="mt-6 animate-slide-up" style={{ animationDelay: "300ms" }}>
+              <Link 
+                to="/purchase" 
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors border-b border-transparent hover:border-primary/50"
+              >
+                <ShoppingBag size={14} />
+                Looking to buy books? Visit our Web Store
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: Premium Store Banner */}
+      <section className="bg-primary text-primary-foreground py-8 md:py-10 relative overflow-hidden">
+        {/* Decorative background circle */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+        
+        <div className="container px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+            
+            <div className="flex items-start gap-5">
+              <div className="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
+                <ShoppingBag size={24} className="text-white" />
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-xl font-bold mb-1">
+                  Want to purchase Premium Books?
+                </h3>
+                <p className="text-primary-foreground/80 max-w-xl text-sm md:text-base">
+                  Due to app store policies, all book purchases must be made via our secure web portal. 
+                  Purchases sync automatically to your iOS app.
+                </p>
+              </div>
+            </div>
+
+            <Link 
+              to="/purchase" 
+              className="group flex items-center gap-2 bg-white text-primary hover:bg-slate-100 font-bold py-3 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap"
+            >
+              Buy Books Now
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+
           </div>
         </div>
       </section>
@@ -452,11 +507,10 @@ export default function Index() {
                 className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center max-w-lg mx-auto animate-slide-up"
                 style={{ animationDelay: "300ms" }}
               >
-                {/* 4. MODIFIED APP STORE BUTTON */}
+                {/* APP STORE BUTTON */}
                 <button
                   type="button"
-                  disabled={true} // Disable the button for now
-                  onClick={() => handleDownloadClick('https://apps.apple.com')}
+                  onClick={() => handleDownloadClick('https://apps.apple.com/in/app/aspira-edge/id6755354949')}
                   className="group flex items-center justify-start gap-3 px-5 py-4 rounded-xl bg-foreground hover:bg-foreground/90 text-background transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] border-2 border-foreground w-full sm:w-auto"
                 >
                   <svg
@@ -470,11 +524,10 @@ export default function Index() {
                   <div className="flex flex-col items-start leading-tight">
                     <span className="text-[11px] opacity-80 font-medium">Download on the</span>
                     <span className="text-lg font-semibold -mt-0.5">App Store</span>
-                    <span className="text-lg font-semibold -mt-0.5">Coming Soon ...</span>
                   </div>
                 </button>
 
-                {/* 4. MODIFIED GOOGLE PLAY BUTTON */}
+                {/* GOOGLE PLAY BUTTON */}
                 <button
                   type="button"
                   onClick={() => handleDownloadClick('https://drive.google.com/file/d/1apNQQWxyP3Ux3UiXhPhmtoTRggED55he/view?usp=drivesdk')}
@@ -523,7 +576,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 5. RENDER BOTH MODALS */}
+      {/* Feature Modals */}
       <FeatureModal
         isOpen={!!selectedFeature}
         onClose={() => setSelectedFeature(null)}

@@ -12,6 +12,7 @@ import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import PurchaseBook from "./pages/PurchaseBook"; 
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,16 @@ export default function App() {
                 </Layout>
               }
             />
+            
+            <Route
+              path="/purchase"
+              element={
+                <Layout>
+                  <PurchaseBook />
+                </Layout>
+              }
+            />
+
             <Route
               path="/support"
               element={
@@ -63,6 +74,7 @@ export default function App() {
                 </Layout>
               }
             />
+            
             <Route
               path="*"
               element={

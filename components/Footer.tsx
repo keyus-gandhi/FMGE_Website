@@ -26,7 +26,7 @@ export default function Footer() {
               <p className="text-xs text-gray-500 font-semibold">Download Our App</p>
               <div className="flex gap-3">
                 <a
-                  href="https://apps.apple.com/app/aspiraedge"
+                  href="https://apps.apple.com/in/app/aspira-edge/id6755354949"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-xs text-gray-300"
