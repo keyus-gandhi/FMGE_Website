@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { X, Send, Loader2 } from "lucide-react";
 
@@ -9,10 +7,9 @@ export default function DownloadAppModal({ isOpen, onClose, downloadUrl }) {
     email: "",
     phone: "",
     device: "",
-    message: "", // 1. Added message field to state
+    message: "",
   });
   
-  // 2. Added state for loading and error handling
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
@@ -25,7 +22,6 @@ export default function DownloadAppModal({ isOpen, onClose, downloadUrl }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 3. Updated handleSubmit to be async and use fetch
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -45,8 +41,19 @@ export default function DownloadAppModal({ isOpen, onClose, downloadUrl }) {
         // Success!
         onClose(); // Close the modal
         if (downloadUrl) {
-          // Open the download link in a new tab
-          window.open(downloadUrl, "_blank", "noopener,noreferrer");
+          // Check if it's an APK file (local download)
+          if (downloadUrl.endsWith('.apk')) {
+            // Create a temporary link element to trigger download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = 'AspiraEdge.apk'; // Set the download filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          } else {
+            // For external links (App Store), open in new tab
+            window.open(downloadUrl, "_blank", "noopener,noreferrer");
+          }
         }
         // Reset form for next time
         setFormData({
@@ -157,7 +164,7 @@ export default function DownloadAppModal({ isOpen, onClose, downloadUrl }) {
             />
           </div>
 
-          {/* 4. ADDED THE MESSAGE TEXTAREA */}
+          {/* Message */}
           <div>
             <label
               htmlFor="message"
@@ -204,7 +211,7 @@ export default function DownloadAppModal({ isOpen, onClose, downloadUrl }) {
           <div className="pt-2">
             <button
               type="submit"
-              disabled={isSubmitting} // 5. Disable button when submitting
+              disabled={isSubmitting}
               className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-70"
             >
               {isSubmitting ? (
@@ -221,7 +228,7 @@ export default function DownloadAppModal({ isOpen, onClose, downloadUrl }) {
             </button>
           </div>
           
-          {/* 6. Show error message if one exists */}
+          {/* Error message */}
           {error && (
             <p className="text-sm text-red-600 text-center">{error}</p>
           )}
