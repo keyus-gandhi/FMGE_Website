@@ -2,7 +2,7 @@ import { ShieldCheck, BookOpen, Smartphone, ArrowRight, CheckCircle } from "luci
 
 export default function PurchaseBook() {
   // The link you provided
-  const PURCHASE_URL = "https://api.aspiraedge.com/api/purchasebook";
+  const PURCHASE_URL = "https://api-v2.aspiraedge.com/api/purchasebook";
 
   return (
     <div className="relative w-full h-full min-h-[80vh] flex items-center justify-center overflow-hidden py-12">
