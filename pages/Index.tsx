@@ -622,7 +622,7 @@ export default function Index() {
                 {/* GOOGLE PLAY BUTTON */}
                 <button
                   type="button"
-                  onClick={() => handleDownloadClick("/app-release.apk")}
+                  onClick={() => handleDownloadClick("https://play.google.com/store/apps/details?id=com.fmge.fmge_app")}
                   className="group flex items-center justify-start gap-3 px-5 py-4 rounded-xl bg-foreground hover:bg-foreground/90 text-background transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] border-2 border-foreground w-full sm:w-auto"
                 >
                   <svg

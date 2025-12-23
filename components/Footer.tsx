@@ -43,7 +43,7 @@ export default function Footer() {
                     App Store
                   </button>
                   <button
-                    onClick={() => handleDownloadClick('/app-release.apk')}
+                    onClick={() => handleDownloadClick('https://play.google.com/store/apps/details?id=com.fmge.fmge_app')}
                     className="inline-flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-xs text-gray-300"
                   >
                     <Download size={14} />
