@@ -25,3 +25,9 @@ dist-ssr
 
 .config/
 !.env
+
+# Python and builds
+python_backend/venv/
+__pycache__/
+*.pyc
+*.apk
