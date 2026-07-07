@@ -13,7 +13,6 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import PurchaseBook from "./pages/PurchaseBook"; 
-import TutorChatWidget from "@/components/TutorChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +21,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
     <Header />
     <main className="flex-1">{children}</main>
     <Footer />
-    <TutorChatWidget />
   </div>
 );
 
@@ -76,7 +74,7 @@ export default function App() {
                 </Layout>
               }
             />
-
+            
             <Route
               path="*"
               element={

@@ -40,11 +40,11 @@ export default function Header() {
           </Link>
 
           <Link 
-            to="/purchase" 
-            className="text-foreground hover:text-primary transition-colors font-medium"
-          >
-            Buy Books
-          </Link>
+          to="/purchase" 
+  className="text-foreground hover:text-primary transition-colors font-medium"
+>
+  Buy Books
+</Link>
         </div>
 
         {/* Mobile Menu Button */}
