@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index";
+import About from "./pages/About";
+import PageMetadata from "./components/PageMetadata";
 import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -31,7 +33,9 @@ export default function App() {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <PageMetadata />
           <Routes>
+            <Route path="/about" element={<Layout><About /></Layout>} />
             <Route
               path="/"
               element={

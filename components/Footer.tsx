@@ -65,8 +65,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="hover:text-white transition-colors">
-                    Features
+                  <Link to="/about" className="hover:text-white transition-colors">
+                    About Aspira Edge
                   </Link>
                 </li>
                 <li>
