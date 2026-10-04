@@ -27,10 +27,10 @@ export default function Header() {
             Home
           </Link>
           <Link
-            to="/"
+            to="/about"
             className="text-foreground hover:text-primary transition-colors font-medium"
           >
-            Features
+            About
           </Link>
           <Link
             to="/support"
@@ -67,11 +67,11 @@ export default function Header() {
                 Home
               </Link>
               <Link
-                to="/"
+                to="/about"
                 className="text-foreground hover:text-primary transition-colors font-medium"
                 onClick={() => setIsOpen(false)}
               >
-                Features
+                About
               </Link>
               <Link
                 to="/support"

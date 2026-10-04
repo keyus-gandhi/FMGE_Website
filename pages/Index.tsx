@@ -10,11 +10,6 @@ import {
   Layers,
   MessagesSquare,
   ShoppingBag,
-  ArrowRight,
-  // NEW ICONS ADDED HERE
-  Globe,
-  RefreshCw,
-  AlertCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -344,100 +339,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* NEW: Improved iOS Purchase Guide Banner */}
-      <section className="bg-primary text-primary-foreground py-10 relative overflow-hidden">
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute -top-24 -left-24 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="container px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            {/* Left Side: The "Why" */}
-            <div className="max-w-xl text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
-                <Smartphone size={14} /> iOS Users
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                How to Buy LMR 3.0 Book
-              </h2>
-              <p className="text-primary-foreground/90 text-sm md:text-base leading-relaxed mb-4">
-                To access the <strong>LMR 3.0 Book</strong> and other premium
-                content on your iPhone, you must purchase them via this secure
-                website.
-              </p>
-
-              <div className="flex items-start gap-3 bg-black/20 p-3 rounded-lg border border-white/10">
-                <AlertCircle
-                  className="shrink-0 mt-0.5 text-yellow-300"
-                  size={18}
-                />
-                <p className="text-xs text-left">
-                  <strong>Critical:</strong> You must use the{" "}
-                  <span className="underline decoration-yellow-300 decoration-2 underline-offset-2">
-                    SAME Email & Password
-                  </span>{" "}
-                  here as you do in the app for the purchase to sync. And For
-                  Android users, purchases can made directly within the app.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Side: The "How" (3 Steps) */}
-            <div className="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-4 bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-              {/* Step 1 */}
-              <div className="flex flex-col items-center text-center w-full sm:w-32">
-                <div className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center mb-2 font-bold shadow-lg">
-                  1
-                </div>
-                <div className="text-sm font-semibold mb-1">Get App</div>
-                <div className="text-xs opacity-80">
-                  Create account in Aspira Edge App
-                </div>
-              </div>
-
-              <div className="hidden sm:block h-px w-8 bg-white/30"></div>
-
-              {/* Step 2 */}
-              <div className="flex flex-col items-center text-center w-full sm:w-32">
-                <div className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center mb-2 font-bold shadow-lg">
-                  2
-                </div>
-                <div className="text-sm font-semibold mb-1">Buy Here</div>
-                <div className="text-xs opacity-80">
-                  Purchase securely on this website
-                </div>
-              </div>
-
-              <div className="hidden sm:block h-px w-8 bg-white/30"></div>
-
-              {/* Step 3 */}
-              <div className="flex flex-col items-center text-center w-full sm:w-32">
-                <div className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center mb-2 font-bold shadow-lg">
-                  <RefreshCw size={18} />
-                </div>
-                <div className="text-sm font-semibold mb-1">Auto Sync</div>
-                <div className="text-xs opacity-80">
-                  Open app & read instantly
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Button centered below on mobile, right aligned on desktop */}
-          <div className="mt-8 flex justify-center lg:justify-start">
-            <Link
-              to="/purchase"
-              className="flex items-center gap-2 bg-white text-primary hover:bg-slate-100 font-bold py-4 px-8 rounded-xl transition-all shadow-xl hover:shadow-2xl active:scale-95"
-            >
-              <Globe size={20} />
-              Go to Book Purchase Portal
-              <ArrowRight size={20} className="ml-1" />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Features Section */}
       <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-900/30">
@@ -644,29 +545,6 @@ export default function Index() {
                 </button>
               </div>
 
-              {/* Additional features list */}
-              <div className="mt-10 pt-10 border-t border-border">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                  {[
-                    { icon: <CheckCircle size={20} />, text: "Offline Access" },
-                    { icon: <Zap size={20} />, text: "Instant Sync" },
-                    { icon: <Smartphone size={20} />, text: "All Devices" },
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex flex-col items-center gap-2 animate-fade-in"
-                      style={{ animationDelay: `${400 + i * 100}ms` }}
-                    >
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        {item.icon}
-                      </div>
-                      <span className="text-sm font-medium text-muted-foreground">
-                        {item.text}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>
